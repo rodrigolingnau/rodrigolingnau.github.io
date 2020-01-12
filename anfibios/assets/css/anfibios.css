@@ -1,0 +1,66 @@
+figure {
+    margin: 0 auto 20px;
+    min-width: 460px;
+}
+
+figure img {
+    max-width: 100%;
+}
+
+figcaption {
+    font-size: 15px;
+    text-align: left;
+    padding: 8px 0;
+}
+
+article>figure {
+    max-width: 620px;
+}
+
+div.colunas {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+div.colunas.duas figure {
+    max-width: 49%;
+}
+
+div.colunas.tres figure {
+    max-width: 32%;
+    min-width: 300px;
+}
+
+figure.esquerda {
+    float: left;
+    width: 49%;
+    margin-right: 2%;
+}
+
+#curiosidades {
+    display: flex;
+    padding-left: 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 calc(50% - 480px);
+}
+
+#curiosidades>section {
+    display: flexbox;
+    width: 45%;
+}
+
+@media screen and (max-width: 900px) {
+    #curiosidades>section {
+        width: auto;
+        padding: 0 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    figure {
+        width: 100%;
+        min-width: 100%;
+    }
+}
