@@ -48,13 +48,44 @@ p {
 }
 
 #figura-vitrine>img.mapa {
-    background: url(https://tile.gbif.org/3857/omt/5/11/18@2x.png?style=osm-bright);
+    background: url(https://tile.gbif.org/3857/omt/5/11/18@2x.png?style=osm-bright) no-repeat;
     background-size: cover;
     background-position: 0 -60px;
     object-position: 0 -60px;
     object-fit: cover;
     width: 554px;
     height: 360px;
+}
+
+.selo::after {
+    display: block;
+    content: "";
+    position: absolute;
+    left: calc(50% + 160px);
+    bottom: 7px;
+    width: 110px;
+    height: 110px;
+    background-size: contain !important;
+}
+
+.selo.alvo::after {
+    background: url(../especies/especie_alvo.png);
+}
+
+.selo.ameacada::before {
+    display: block;
+    content: "";
+    position: absolute;
+    left: calc(50% + 160px);
+    bottom: 125px;
+    width: 110px;
+    height: 110px;
+    background-size: contain !important;
+    background: url(../especies/especie_ameacada.png);
+}
+
+.selo.exotica::after {
+    background: url(../especies/especie_exotica.png);
 }
 
 body>img {
