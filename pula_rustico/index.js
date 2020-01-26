@@ -78,7 +78,7 @@
      * Default game width.
      * @const
      */
-    var DEFAULT_WIDTH = 600;
+    var DEFAULT_WIDTH = 400;
 
     /**
      * Frames per second.
@@ -104,7 +104,7 @@
      */
     Runner.config = {
         ACCELERATION: 0.001,
-        BG_CLOUD_SPEED: 0.2,
+        BG_SPEED: 0.2,
         BOTTOM_PAD: 10,
         CLEAR_TIME: 3000,
         CLOUD_FREQUENCY: 0.5,
@@ -118,11 +118,11 @@
         MAX_CLOUDS: 6,
         MAX_OBSTACLE_LENGTH: 3,
         MAX_OBSTACLE_DUPLICATION: 2,
-        MAX_SPEED: 13,
+        MAX_SPEED: 9,
         MIN_JUMP_HEIGHT: 35,
         MOBILE_SPEED_COEFFICIENT: 1.2,
         RESOURCE_TEMPLATE_ID: 'audio-resources',
-        SPEED: 4,
+        SPEED: 3,
         SPEED_DROP_COEFFICIENT: 3
     };
 
@@ -133,7 +133,7 @@
      */
     Runner.defaultDimensions = {
         WIDTH: DEFAULT_WIDTH,
-        HEIGHT: 150
+        HEIGHT: 300
     };
 
 
@@ -389,6 +389,8 @@
 
             window.addEventListener(Runner.events.RESIZE,
                 this.debounceResize.bind(this));
+
+            document.querySelector('.runner-container').style.backgroundPositionX = '0px';
         },
 
         /**
@@ -777,6 +779,8 @@
             this.crashed = true;
             this.distanceMeter.acheivement = false;
 
+            this.clearCanvas();
+            this.horizon.update(0, this.currentSpeed, true);
             this.tRex.update(100, Trex.status.CRASHED);
 
             // Game over panel.
@@ -1107,9 +1111,9 @@
         // Adjustments are made to the bounding box as there is a 1 pixel white
         // border around the t-rex and obstacles.
         var tRexBox = new CollisionBox(
-            tRex.xPos + 1,
+            tRex.xPos + 20,
             tRex.yPos + 1,
-            tRex.config.WIDTH - 2,
+            tRex.config.WIDTH - 22,
             tRex.config.HEIGHT - 2);
 
         var obstacleBox = new CollisionBox(
@@ -1433,7 +1437,7 @@
             type: 'CACTUS_SMALL',
             width: 17,
             height: 35,
-            yPos: 105,
+            yPos: 255,
             multipleSpeed: 4,
             minGap: 140,
             minSpeed: 0,
@@ -1447,7 +1451,7 @@
             type: 'CACTUS_LARGE',
             width: 25,
             height: 50,
-            yPos: 90,
+            yPos: 240,
             multipleSpeed: 7,
             minGap: 180,
             minSpeed: 0,
@@ -1461,8 +1465,8 @@
             type: 'PTERODACTYL',
             width: 46,
             height: 40,
-            yPos: [100, 75, 50], // Variable height.
-            yPosMobile: [100, 50], // Variable height mobile.
+            yPos: [250, 200, 150], // Variable height.
+            yPosMobile: [250, 150], // Variable height mobile.
             multipleSpeed: 999,
             minSpeed: 8.5,
             minGap: 150,
@@ -2193,103 +2197,6 @@
         }
     };
 
-
-    //******************************************************************************
-
-    /**
-     * Cloud background item.
-     * Similar to an obstacle object but without collision boxes.
-     * @param {HTMLCanvasElement} canvas Canvas element.
-     * @param {Object} spritePos Position of image in sprite.
-     * @param {number} containerWidth
-     */
-    function Cloud(canvas, spritePos, containerWidth) {
-        this.canvas = canvas;
-        this.canvasCtx = this.canvas.getContext('2d');
-        this.spritePos = spritePos;
-        this.containerWidth = containerWidth;
-        this.xPos = containerWidth;
-        this.yPos = 0;
-        this.remove = false;
-        this.cloudGap = getRandomNum(Cloud.config.MIN_CLOUD_GAP,
-            Cloud.config.MAX_CLOUD_GAP);
-
-        this.init();
-    };
-
-
-    /**
-     * Cloud object config.
-     * @enum {number}
-     */
-    Cloud.config = {
-        HEIGHT: 14,
-        MAX_CLOUD_GAP: 400,
-        MAX_SKY_LEVEL: 30,
-        MIN_CLOUD_GAP: 100,
-        MIN_SKY_LEVEL: 71,
-        WIDTH: 46
-    };
-
-
-    Cloud.prototype = {
-        /**
-         * Initialise the cloud. Sets the Cloud height.
-         */
-        init: function () {
-            this.yPos = getRandomNum(Cloud.config.MAX_SKY_LEVEL,
-                Cloud.config.MIN_SKY_LEVEL);
-            this.draw();
-        },
-
-        /**
-         * Draw the cloud.
-         */
-        draw: function () {
-            this.canvasCtx.save();
-            var sourceWidth = Cloud.config.WIDTH;
-            var sourceHeight = Cloud.config.HEIGHT;
-
-            if (IS_HIDPI) {
-                sourceWidth = sourceWidth * 2;
-                sourceHeight = sourceHeight * 2;
-            }
-
-            this.canvasCtx.drawImage(Runner.imageSprite, this.spritePos.x,
-                this.spritePos.y,
-                sourceWidth, sourceHeight,
-                this.xPos, this.yPos,
-                Cloud.config.WIDTH, Cloud.config.HEIGHT);
-
-            this.canvasCtx.restore();
-        },
-
-        /**
-         * Update the cloud position.
-         * @param {number} speed
-         */
-        update: function (speed) {
-            if (!this.remove) {
-                this.xPos -= Math.ceil(speed);
-                this.draw();
-
-                // Mark as removeable if no longer in the canvas.
-                if (!this.isVisible()) {
-                    this.remove = true;
-                }
-            }
-        },
-
-        /**
-         * Check if the cloud is visible on the stage.
-         * @return {boolean}
-         */
-        isVisible: function () {
-            return this.xPos + Cloud.config.WIDTH > 0;
-        }
-    };
-
-
     //******************************************************************************
 
     /**
@@ -2479,7 +2386,7 @@
     HorizonLine.dimensions = {
         WIDTH: 600,
         HEIGHT: 12,
-        YPOS: 127
+        YPOS: 277
     };
 
 
@@ -2599,8 +2506,7 @@
         this.nightMode = null;
 
         // Cloud
-        this.clouds = [];
-        this.cloudSpeed = this.config.BG_CLOUD_SPEED;
+        this.backgroundSpeed = this.config.BG_SPEED;
 
         // Horizon
         this.horizonLine = null;
@@ -2613,7 +2519,7 @@
      * @enum {number}
      */
     Horizon.config = {
-        BG_CLOUD_SPEED: 0.2,
+        BG_SPEED: 0.2,
         BUMPY_THRESHOLD: .3,
         CLOUD_FREQUENCY: .5,
         HORIZON_HEIGHT: 16,
@@ -2626,7 +2532,6 @@
          * Initialise the horizon. Just add the line and a cloud. No obstacles.
          */
         init: function () {
-            this.addCloud();
             this.horizonLine = new HorizonLine(this.canvas, this.spritePos.HORIZON);
             this.nightMode = new NightMode(this.canvas, this.spritePos.MOON,
                 this.dimensions.WIDTH);
@@ -2657,30 +2562,8 @@
          * @param {number} currentSpeed
          */
         updateClouds: function (deltaTime, speed) {
-            var cloudSpeed = this.cloudSpeed / 1000 * deltaTime * speed;
-            var numClouds = this.clouds.length;
-
-            if (numClouds) {
-                for (var i = numClouds - 1; i >= 0; i--) {
-                    this.clouds[i].update(cloudSpeed);
-                }
-
-                var lastCloud = this.clouds[numClouds - 1];
-
-                // Check for adding a new cloud.
-                if (numClouds < this.config.MAX_CLOUDS &&
-                    (this.dimensions.WIDTH - lastCloud.xPos) > lastCloud.cloudGap &&
-                    this.cloudFrequency > Math.random()) {
-                    this.addCloud();
-                }
-
-                // Remove expired clouds.
-                this.clouds = this.clouds.filter(function (obj) {
-                    return !obj.remove;
-                });
-            } else {
-                this.addCloud();
-            }
+            var bgSpeed = this.backgroundSpeed / 10 * deltaTime * speed;
+            document.querySelector('.runner-container').style.backgroundPositionX = (parseInt(document.querySelector('.runner-container').style.backgroundPositionX) - bgSpeed) + 'px';
         },
 
         /**
@@ -2785,14 +2668,6 @@
             this.canvas.width = width;
             this.canvas.height = height;
         },
-
-        /**
-         * Add a new cloud to the horizon.
-         */
-        addCloud: function () {
-            this.clouds.push(new Cloud(this.canvas, this.spritePos.CLOUD,
-                this.dimensions.WIDTH));
-        }
     };
 })();
 

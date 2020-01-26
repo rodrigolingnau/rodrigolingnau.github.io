@@ -1,5 +1,5 @@
 {
- "name": "Espécies da Floresta com Araucárias",
+ "name": "Pula Rústico",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
@@ -36,6 +36,8 @@
    "sizes": "192x192",
    "type": "image\/png",
    "density": "4.0"
-  }
- ]
+  },
+ ],
+ "display": "standalone",
+ "orientation": "landscape"
 }

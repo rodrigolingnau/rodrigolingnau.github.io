@@ -6,7 +6,7 @@ html, body {
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 100%;
+  height: 300px;
 }
 
 /*body {  
@@ -14,7 +14,7 @@ html, body {
 }*/
 
 canvas {
-  background: linear-gradient(0, #B36362 0%, #B36362 10%,rgba(255,255,255,1) 11%, rgba(231, 150, 43, 0.481) 100%);
+  background: linear-gradient(0, #B36362 0%, #B36362 5%,rgba(0,0,0,0) 5.1%, rgba(0,0,0,0) 100%);
 }
 
 .icon {
@@ -32,6 +32,9 @@ canvas {
   display: none;
 }
 
+#main-content {
+  display: none;
+}
 
 /* Offline page */
 
@@ -46,16 +49,21 @@ canvas {
 }
 
 .offline .runner-container {
-  height: 150px;
+  height: 300px;
   max-width: 600px;
+  width: 100%;
   overflow: hidden;
   position: absolute;
   top: 35px;
   width: 44px;
+  background-image: url('assets/default_200_percent/fundo_repeticao.jpg');
+  background-repeat: repeat-x;
+  background-size: auto 300px;
+  background-position-x: 0px;
 }
 
 .offline .runner-canvas {
-  height: 150px;
+  height: 300px;
   max-width: 600px;
   opacity: 1;
   overflow: hidden;
@@ -120,10 +128,16 @@ canvas {
 
 @media (min-height: 240px) and (orientation: landscape) {
   .offline .interstitial-wrapper {
-    margin-bottom: 90px;
+    margin-bottom: 0;
   }
   .icon-offline {
     margin-bottom: 20px;
+  }
+}
+
+@media (min-height: 720px) {
+  html {
+    zoom: 2;
   }
 }
 
