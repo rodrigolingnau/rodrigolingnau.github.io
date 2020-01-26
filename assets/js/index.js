@@ -1,7 +1,7 @@
 document.styleSheets[0].addRule('#wrapper::before', 'top: 0px;', 1);
 
 document.onscroll = function() {
-    document.styleSheets[0].cssRules[1].style.top = window.scrollY*1/7;
+    document.styleSheets[0].cssRules[1].style.top = window.scrollY*1/7 + 'px';
 }
 
 const navA = document.querySelectorAll('nav li a');
