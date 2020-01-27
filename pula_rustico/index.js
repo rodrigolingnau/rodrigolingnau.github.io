@@ -78,7 +78,7 @@
      * Default game width.
      * @const
      */
-    var DEFAULT_WIDTH = 400;
+    var DEFAULT_WIDTH = 600;
 
     /**
      * Frames per second.
@@ -87,7 +87,7 @@
     var FPS = 60;
 
     /** @const */
-    var IS_HIDPI = window.devicePixelRatio > 1;
+    var IS_HIDPI = true; //window.devicePixelRatio > 1;
 
     /** @const */
     var IS_IOS = /iPad|iPhone|iPod/.test(window.navigator.platform);
@@ -133,7 +133,7 @@
      */
     Runner.defaultDimensions = {
         WIDTH: DEFAULT_WIDTH,
-        HEIGHT: 300
+        HEIGHT: window.innerHeight > 300 ? 300 : window.innerHeight
     };
 
 
@@ -466,7 +466,7 @@
 
                 // CSS animation definition.
                 var keyframes = '@-webkit-keyframes intro { ' +
-                    'from { width:' + Trex.config.WIDTH + 'px }' +
+                    'from { width:' + this.dimensions.WIDTH + 'px }' +
                     'to { width: ' + this.dimensions.WIDTH + 'px }' +
                     '}';
                 
@@ -481,6 +481,7 @@
 
                 this.containerEl.style.webkitAnimation = 'intro .4s ease-out 1 both';
                 this.containerEl.style.width = this.dimensions.WIDTH + 'px';
+                this.containerEl.style.zIndex = 2;
 
                 // if (this.touchController) {
                 //     this.outerContainerEl.appendChild(this.touchController);
@@ -1582,7 +1583,7 @@
      */
     Trex.animFrames = {
         WAITING: {
-            frames: [{"x":0,"y":65,"w":76,"h":46}],
+            frames: [{"x":0,"y":65,"w":38,"h":46}],
             msPerFrame: 1000 / 3
         },
         RUNNING: {
