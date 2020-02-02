@@ -86,16 +86,16 @@
      */
     var FPS = 60;
 
-    /** @const */
+    /** @var */
     var IS_HIDPI = true; //window.devicePixelRatio > 1;
 
-    /** @const */
+    /** @var */
     var IS_IOS = /iPad|iPhone|iPod/.test(window.navigator.platform);
 
-    /** @const */
+    /** @var */
     var IS_MOBILE = /Android/.test(window.navigator.userAgent) || IS_IOS;
 
-    /** @const */
+    /** @var */
     var IS_TOUCH_ENABLED = 'ontouchstart' in window;
 
     /**

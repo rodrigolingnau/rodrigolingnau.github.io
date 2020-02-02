@@ -1,9 +1,9 @@
-const body = document.documentElement;
-const anfibio = document.querySelectorAll('.clicavel');
-const iframeModal = document.querySelector('#modal iframe');
+var body = document.documentElement;
+var anfibio = document.querySelectorAll('.clicavel');
+var iframeModal = document.querySelector('#modal iframe');
 for (var i = 0; i < anfibio.length; i++) {
     anfibio[i].onclick = function (event) {
-        const anfibio = event.currentTarget.getAttribute("id");
+        var anfibio = event.currentTarget.getAttribute("id");
         iframeModal.setAttribute('src', '');
         document.getElementById('modal').style.setProperty('display', 'block');
         body.className = 'no-click';
@@ -13,7 +13,7 @@ for (var i = 0; i < anfibio.length; i++) {
     }
 }
 
-const fecharModal = document.querySelector('#modal .fechar');
+var fecharModal = document.querySelector('#modal .fechar');
 fecharModal.onclick = function() {
     document.getElementById('modal').style.setProperty('display', 'none');
     body.className = '';
@@ -21,7 +21,7 @@ fecharModal.onclick = function() {
     iframeModal.contentWindow.pause();
 }
 
-const modal = document.querySelector('#modal');
+var modal = document.querySelector('#modal');
 modal.onclick = function(event) {
     if (event.target != iframeModal) {
         fecharModal.onclick();

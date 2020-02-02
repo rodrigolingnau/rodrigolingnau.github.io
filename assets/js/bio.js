@@ -1,9 +1,9 @@
 /*var intervaloScroll;
 var posicaoScroll = 0;
-const larguraVitrine = document.getElementById('vitrine').offsetWidth;
-const larguraFigura = document.getElementById('figura-vitrine').scrollWidth;
-const velocidade = 20;
-const tempoFrame = 1000 / 30;
+var larguraVitrine = document.getElementById('vitrine').offsetWidth;
+var larguraFigura = document.getElementById('figura-vitrine').scrollWidth;
+var velocidade = 20;
+var tempoFrame = 1000 / 30;
 document.getElementById('direita').onmouseover = function() {
     intervaloScroll = setInterval(function() {
         if (posicaoScroll + velocidade > larguraFigura - (larguraVitrine - 80)) {
