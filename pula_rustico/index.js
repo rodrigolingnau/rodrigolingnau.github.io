@@ -103,14 +103,14 @@
      * @enum {number}
      */
     Runner.config = {
-        ACCELERATION: 0.001,
+        ACCELERATION: 0.0007,
         BG_SPEED: 0.2,
         BOTTOM_PAD: 10,
         CLEAR_TIME: 3000,
         CLOUD_FREQUENCY: 0.5,
         GAMEOVER_CLEAR_TIME: 750,
-        GAP_COEFFICIENT: 1,
-        GRAVITY: 0.6,
+        GAP_COEFFICIENT: 1.2,
+        GRAVITY: 0.65,
         INITIAL_JUMP_VELOCITY: 12,
         INVERT_FADE_DURATION: 12000,
         INVERT_DISTANCE: 700,
@@ -120,7 +120,7 @@
         MAX_OBSTACLE_DUPLICATION: 2,
         MAX_SPEED: 9,
         MIN_JUMP_HEIGHT: 35,
-        MOBILE_SPEED_COEFFICIENT: 1.2,
+        MOBILE_SPEED_COEFFICIENT: 1.5,
         RESOURCE_TEMPLATE_ID: 'audio-resources',
         SPEED: 3,
         SPEED_DROP_COEFFICIENT: 3

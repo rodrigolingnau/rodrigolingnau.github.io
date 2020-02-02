@@ -90,6 +90,15 @@ canvas {
   display: none;
 }
 
+#main-frame-error a {
+  display: block; 
+  position: absolute;
+  right: 10px;
+  top: 66px;
+  width: 100px;
+  z-index: 3;
+}
+
 @media (max-width: 420px) {
   .suggested-left > #control-buttons, .suggested-right > #control-buttons {
     float: none;
@@ -113,6 +122,15 @@ canvas {
   .offline .runner-container {
     top: 0;
   }
+  
+  .offline .controller {
+    height: auto;
+    width: 100%;
+  }
+
+  #main-frame-error a {
+    top: 30px;
+  }
 }
 
 @media (max-height: 350px) {
@@ -127,13 +145,6 @@ canvas {
   }
   .nav-wrapper {
     margin-top: 30px;
-  }
-}
-
-@media (min-width: 600px) and (max-width: 736px) and (orientation: landscape) {
-  .offline .interstitial-wrapper {
-    margin-left: 0;
-    margin-right: 0;
   }
 }
 
@@ -181,12 +192,14 @@ canvas {
   }
 }
 
-@media (max-height: 300px) {
-  .offline .runner-container {
-    height: 100%;
+@media (max-height: 400px) and (orientation: landscape) {
+  html {
+    zoom: 0.8
   }
-  
-  .offline .runner-canvas {
-    height: 100%;
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  html {
+    zoom: 0.9
   }
 }
