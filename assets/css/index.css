@@ -1,3 +1,7 @@
+html {
+    position: relative;
+}
+
 h2 {
     font-family: 'Chivo', sans-serif;
     font-weight: 700;
@@ -102,6 +106,11 @@ section:nth-of-type(3)>div {
 #jogos img {
     width: 220px;
     height: 220px;
+}
+
+.loader {
+  height: 0;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 900px) {

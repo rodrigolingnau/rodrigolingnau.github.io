@@ -12,8 +12,15 @@ body {
 
 nav img {
     width: 400px;
+    height: 292px;
     margin: 80px 50px 0 70px;
     float: left;
+    margin-top: -190px;
+    background: url('../img/marca_animada/frame-00.png') no-repeat;
+    background-position: bottom right;
+    background-size: cover;
+    object-fit: contain;
+    object-position: 0 0;
 }
 
 nav ul {
@@ -67,6 +74,18 @@ nav::after {
     content: " ";
     display: block;
     clear: both;
+}
+
+#main {
+    width: 100%;
+    background-color: 'white';
+    z-index: 1;
+}
+
+#content.fixed {
+    width: 100%;
+    position: fixed;
+    top: 128px;
 }
 
 h1,
