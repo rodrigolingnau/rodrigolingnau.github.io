@@ -34,40 +34,19 @@ module.exports = function(grunt){
           },
           css: {
             files: ['**/*.css','!**/*.min.css','!node_modules/**/*','!Gruntfile.js'],
-            tasks: ['cssmin','gzip:css','replace'],
+            tasks: ['cssmin'],
             options: {
               spawn: false
             }
           },
           js: {
             files: ['**/*.js','!**/*.min.js','!node_modules/**/*','!Gruntfile.js'],
-            tasks: ['uglify','gzip:js','replace'],
+            tasks: ['uglify'],
             options: {
               spawn: false
             }
           }
         },
-
-        gzip:{
-          js:{
-            files: [{
-              expand: true,
-              cwd: '',
-              src: ['**/*.min.js'],
-              dest: '',
-              ext: '.min.js.gz'
-            }]
-          },
-          css:{
-            files: [{
-              expand: true,
-              cwd: '',
-              src: ['**/*.min.css'],
-              dest: '',
-              ext: '.min.css.gz'
-            }]
-          }
-       }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -76,5 +55,5 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-zlib');
 
     grunt.registerTask('default', ['watch']);
-    grunt.registerTask('build', ['cssmin','gzip:css','uglify','gzip:js','replace']);
+    grunt.registerTask('build', ['cssmin','gzip:css','uglify','gzip:js']);
 }
