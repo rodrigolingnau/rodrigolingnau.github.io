@@ -23,7 +23,6 @@ h2 {
     font-weight: 700;
     font-size: 120%;
     color: #DF8D02;
-    font-style: italic;
     margin-top: 0;
     display: inline-block;
     width: 396px;
@@ -45,6 +44,7 @@ p {
     margin: 0;
     word-spacing: 20px;
     text-align: center;
+    height: 360px;
 }
 
 #figura-vitrine>img.mapa {
