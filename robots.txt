@@ -1,0 +1,3 @@
+Sitemap: http://www.anfibiosdasaraucarias.com.br/sitemap.xml
+User-agent:*
+Disallow:
