@@ -16,10 +16,17 @@ nav img {
     float: left;
 }
 
+nav video {
+    width: 500px;
+    margin: -24px 0 -202px -30px;
+    float: left;
+}
+
 nav ul {
     text-align: right;
     padding: 80px 70px 0;
     font-size: 75%;
+    margin-top: 0;
 }
 
 nav li {
@@ -194,6 +201,13 @@ a.botao-cta {
         position: relative;
     }
 
+    nav video {
+        width: 250px;
+        margin: -12px 0 -101px -15px;
+        z-index: 0;
+        position: relative;
+    }
+
     nav ul {
         position: absolute;
         background: url(../img/menu.svg) 100% -12px no-repeat;
@@ -227,6 +241,6 @@ a.botao-cta {
     }
 
     nav ul li:first-of-type {
-        margin-top: 50px;
+        margin-top: 64px;
     }
 }
