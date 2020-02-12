@@ -6,27 +6,27 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-  <loc>http://www.anfibiosdasaraucarias.com.br/</loc>
+  <loc>https://www.anfibiosdasaraucarias.com.br/</loc>
   <lastmod>2020-02-12T02:10:02+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://www.anfibiosdasaraucarias.com.br/sobre.html</loc>
+  <loc>https://www.anfibiosdasaraucarias.com.br/sobre.html</loc>
   <lastmod>2020-02-12T02:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.anfibiosdasaraucarias.com.br/anfibios.html</loc>
+  <loc>https://www.anfibiosdasaraucarias.com.br/anfibios.html</loc>
   <lastmod>2020-02-12T02:10:01+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.anfibiosdasaraucarias.com.br/especies.html</loc>
+  <loc>https://www.anfibiosdasaraucarias.com.br/especies.html</loc>
   <lastmod>2020-02-12T02:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.anfibiosdasaraucarias.com.br/pula_rustico.html</loc>
+  <loc>https://www.anfibiosdasaraucarias.com.br/pula_rustico.html</loc>
   <lastmod>2020-02-12T02:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
